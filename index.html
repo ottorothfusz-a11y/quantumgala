@@ -1,332 +1,114 @@
-<title>Quantum Gala</title>
+<title>Quantum Gala Aanmelden</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <script>(function(){var p=location.pathname,l=p.split("/").pop();if(location.protocol!=="file:"&&l&&l.indexOf(".")<0&&!/claude\.ai|claudeusercontent/.test(location.host)){var b=document.createElement("base");b.href=p+"/";document.head.appendChild(b)}})()</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap">
 <style>
-/* Layout: The Finest Media system. Media first, then the value stack, one popup to collect name + WhatsApp. */
+/* Layout: one phone-first column, The Finest Media system. Built to be opened from a pinned YouTube comment. */
 :root{--bg:#0a0a0a;--bg2:#141413;--ink:#f2eee4;--ink2:#cfc9bc;--ink3:#97917f;--line:rgba(242,238,228,.12);
 --serif:"EB Garamond",Georgia,"Times New Roman",serif;--sans:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color-scheme:dark}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans);margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-img,video{max-width:100%}a{color:inherit}:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.w{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-.narrow{max-width:780px}
-.ey{display:block;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink3);font-weight:600}
-h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;text-wrap:balance}h1 em,h2 em,h3 em{font-style:italic}
-section{padding-block:80px}
-section h2{font-size:clamp(34px,4.6vw,56px);line-height:1.04;margin-top:14px}
-.lead{color:var(--ink2);max-width:58ch;margin:16px 0 0;font-size:17px}
-.cta{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);text-decoration:none;border:0;border-radius:999px;padding:15px 24px;font:600 15px var(--sans);cursor:pointer}
-.cta span{opacity:.55}.cta.g{background:transparent;color:var(--ink);border:1px solid var(--line)}
-
-/* gate */
-#gate{position:fixed;inset:0;z-index:60;background:var(--bg);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px max(20px,env(safe-area-inset-right,0px)) 24px max(20px,env(safe-area-inset-left,0px));transition:opacity .7s}
-#gate.out{opacity:0;pointer-events:none}
-#gate .t{font:400 clamp(52px,10vw,88px)/1 var(--serif);margin:0 0 10px}
-#gate p{color:var(--ink3);font-size:13px;margin:0 0 28px}
-#gate .skip{display:block;margin:16px auto 0;background:none;border:0;color:var(--ink3);font:500 13px var(--sans);text-decoration:underline;cursor:pointer}
-
-/* hero */
-.hero{position:relative;min-height:94svh;display:flex;align-items:flex-end;overflow:hidden;padding-block:0}
-.hero .media{position:absolute;inset:0;background:var(--bg2) url(photo-01.jpg) center/cover}
-.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.5),rgba(10,10,10,0) 30%,rgba(10,10,10,.55) 62%,#0a0a0a)}
-.hi{position:relative;z-index:1;width:100%;padding-block:40px 56px}
-.brand{font:600 12px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase}.brand i{font-style:normal;opacity:.55;margin:0 8px}
-.hero h1{font-size:clamp(68px,12vw,150px);line-height:.9;margin-top:22px;letter-spacing:-.015em}
-.only{display:inline-block;margin-top:22px;border:1px solid rgba(242,238,228,.3);border-radius:999px;padding:8px 14px;font-size:13px;color:var(--ink);background:rgba(10,10,10,.35);backdrop-filter:blur(6px)}
-.hero p{max-width:500px;color:var(--ink2);font-size:clamp(17px,1.5vw,19px);margin:16px 0 26px}
-.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:20px;font-size:13px;color:var(--ink2)}
-.sound{position:absolute;z-index:2;right:max(16px,env(safe-area-inset-right,0px));top:16px;font:500 12px var(--sans);color:var(--ink);background:rgba(0,0,0,.45);border:1px solid var(--line);padding:7px 12px;border-radius:999px;cursor:pointer}
-
-/* about quantum */
-.about{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:end}
-.about p{color:var(--ink2);margin:0;font-size:17px}
-.about p+p{margin-top:14px}
-
-/* media wall */
-.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:40px}
-.reels figure{margin:0;position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:var(--bg2)}
-.reels video,.reels img{width:100%;height:100%;object-fit:cover;display:block}
-.photos{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:minmax(0,1fr);gap:10px;margin-top:10px}
-.photos figure{margin:0;border-radius:14px;overflow:hidden;background:var(--bg2);aspect-ratio:4/5}
-.photos figure:first-child{grid-row:span 2;aspect-ratio:auto}
-.photos img{width:100%;height:100%;object-fit:cover;display:block}
-
-/* value stack */
-.stack{margin-top:40px;border-top:1px solid var(--line)}
-.v{display:grid;grid-template-columns:1fr auto;gap:12px 28px;align-items:start;padding:26px 0;border-bottom:1px solid var(--line)}
-.v h3{font-size:clamp(24px,2.6vw,32px);line-height:1.12}
-.v p{margin:8px 0 0;color:var(--ink2);max-width:58ch}
-.v .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--ink3);white-space:nowrap;padding-top:8px}
-.v.hl{background:linear-gradient(90deg,rgba(242,238,228,.05),transparent);padding-left:18px;padding-right:18px;margin-inline:-18px;border-radius:14px;border-bottom-color:transparent}
-
-/* guides */
-.guides{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:40px}
-.guide{border-radius:16px;background:var(--bg2);padding:28px;display:grid;grid-template-columns:110px 1fr;gap:22px;align-items:center}
-.cover{aspect-ratio:1/1.414;background:var(--ink);color:var(--bg);padding:12px 10px;position:relative;box-shadow:0 20px 40px rgba(0,0,0,.5)}
-.cover small{display:block;font:600 6px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#6e6a60}
-.cover strong{display:block;margin-top:8px;font:400 13px/1.1 var(--serif)}
-.guide b{display:block;font:400 24px/1.15 var(--serif)}
-.guide p{margin:8px 0 0;color:var(--ink3);font-size:14.5px}
-
-/* price */
-.price{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:40px}
-.tier{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--bg2)}
-.tier small{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--ink3)}
-.tier .n{font:600 clamp(44px,6vw,64px)/1 var(--sans);letter-spacing:-.04em;margin-top:12px}
-.tier p{margin:8px 0 0;color:var(--ink3);font-size:14px}
-.tier.now{border-color:rgba(242,238,228,.4)}.tier.now small{color:var(--ink)}
-.tier.past{opacity:.45}.tier.past .n{text-decoration:line-through}
-.up{margin-top:10px;border:1px solid var(--line);border-radius:16px;padding:22px 26px;display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
-.up b{font:400 26px/1.15 var(--serif)}.up p{margin:6px 0 0;color:var(--ink3);font-size:14.5px;max-width:54ch}
-.up .amt{font:600 22px var(--sans);white-space:nowrap}
-
-.hosts{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.mec{display:inline-flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:999px;padding:8px 22px 8px 8px;background:var(--bg2)}
-.mec img{width:56px;height:56px;border-radius:50%;object-fit:cover}
-.mec b{display:block;font-weight:600;font-size:17px}.mec span{display:block;font-size:13px;color:var(--ink3)}
-
-.final{text-align:center}
-.final h2{margin-inline:auto;max-width:16ch}
-.final .row{justify-content:center;margin-top:28px}
-
-details{border-bottom:1px solid var(--line);padding:20px 0}
-.faq{margin-top:28px;border-top:1px solid var(--line)}
-summary{cursor:pointer;list-style:none;font:400 22px/1.3 var(--serif);display:flex;justify-content:space-between;gap:20px}
-summary::-webkit-details-marker{display:none}
-summary:after{content:"+";color:var(--ink3);font-family:var(--sans)}details[open] summary:after{content:"–"}
-details p{color:var(--ink2);margin:10px 0 0;max-width:62ch}
-
-/* sticky bar */
-.bar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .4s;padding-bottom:env(safe-area-inset-bottom,0px)}
-.bar.on{transform:none}
-.bar .w{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:12px}
-.bar span{font-size:13px;color:var(--ink3)}.bar span b{color:var(--ink);font-size:16px;margin-right:8px}
-.bar .cta{padding:12px 20px;font-size:14px}
-
-/* popup */
-.modal{position:fixed;inset:0;z-index:70;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);padding:16px max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
-.modal[hidden]{display:none!important}
-@media (min-width:700px){.modal{align-items:center}}
-.sheet{width:100%;max-width:440px;background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:26px;position:relative;animation:up .35s ease}
-@keyframes up{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
-.x{position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font:400 20px/1 var(--sans);cursor:pointer}
-.sheet h3{font-size:32px;line-height:1.05}
-.sheet .s{color:var(--ink3);font-size:14px;margin:8px 0 0}
-form{display:grid;gap:14px;margin-top:20px}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans);margin:0;-webkit-font-smoothing:antialiased}
+main{max-width:560px;margin:0 auto;padding-block:44px 56px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.ey{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink3);font-weight:600}
+h1{font:400 clamp(56px,15vw,84px)/.92 var(--serif);margin:18px 0 0;letter-spacing:-.015em}
+h1 em,h2 em{font-style:italic}
+.when{margin-top:14px;color:var(--ink2);font-size:14px;letter-spacing:.04em}
+.hook{font:400 23px/1.3 var(--serif);margin:28px 0 0;color:var(--ink);text-wrap:balance}
+.get{list-style:none;padding:0;margin:26px 0 0;border-top:1px solid var(--line)}
+.get li{padding:13px 0;border-bottom:1px solid var(--line);color:var(--ink2);font-size:15px}
+.get li b{color:var(--ink);font-weight:600}
+.seats{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px;font-size:14px;color:var(--ink2)}
+.meter{height:4px;border-radius:4px;background:var(--line);margin-top:10px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--ink);width:0}
+.card{margin-top:30px;border:1px solid var(--line);border-radius:20px;background:var(--bg2);padding:24px}
+.card h2{font:400 30px/1.1 var(--serif);margin:0}
+.card p{color:var(--ink3);font-size:14px;margin:8px 0 0}
+form{display:grid;gap:16px;margin-top:20px}
 .f{display:grid;gap:7px}
 .f label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--ink3)}
 .f input{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);font:400 17px var(--sans);padding:15px 16px;border-radius:12px}
 .f input:focus{outline:0;border-color:rgba(242,238,228,.45)}
 .f input::placeholder{color:#5f5b52}
-form .cta{width:100%;justify-content:center;padding:17px}
+button{display:flex;justify-content:center;align-items:center;gap:8px;width:100%;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:17px 22px;font:600 15px var(--sans);cursor:pointer}
+button span{opacity:.55}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .err{color:#e59a85;font-size:14px;margin:0}
-.fine{font-size:12.5px;color:var(--ink3);text-align:center;margin:0}
-.ok{display:none}.ok.on{display:block}
-
-footer{padding-block:34px 100px;color:var(--ink3);font-size:12.5px;border-top:1px solid var(--line)}
-
-@media (max-width:760px){
-section{padding-block:60px}.hero{min-height:88svh}.hi{padding-block:28px 40px}
-.brand span{display:block;margin-top:8px}.brand i{display:none}
-.about,.guides,.price{grid-template-columns:1fr}.about{gap:18px}
-.reels{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-left:-20px;margin-right:-20px;padding:0 20px 4px;scroll-padding:0 20px;scrollbar-width:none}
-.reels::-webkit-scrollbar{display:none}
-.reels figure{flex:0 0 62%;scroll-snap-align:start}
-.photos{grid-template-columns:1fr 1fr}.photos figure:first-child{grid-column:span 2;grid-row:auto;aspect-ratio:4/3}
-.v{grid-template-columns:1fr}.v .k{padding-top:0;order:-1}
-.guide{grid-template-columns:84px 1fr;padding:20px;gap:16px}
-.bar .hide-s{display:none}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+.small{font-size:12.5px;color:var(--ink3);margin:0;text-align:center}
+.done{display:none}.done.on{display:block}
+.hosts{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.mec{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:6px 16px 6px 6px;background:var(--bg2)}
+.mec img{width:38px;height:38px;border-radius:50%;object-fit:cover}
+.mec b{display:block;font-weight:600;font-size:14px}.mec span{display:block;font-size:12px;color:var(--ink3)}
+footer{margin-top:34px;font-size:12px;color:var(--ink3);text-align:center}
+footer a{color:var(--ink2)}
 </style>
 
-<div id="gate" role="dialog" aria-label="Enter">
-  <div>
-    <h1 class="t">Quantum <em>Gala</em></h1>
-    <p>Quantum Age Capital · Limited Edition</p>
-    <button class="cta" id="enter" type="button">Enter with sound</button>
-    <button class="skip" id="skip" type="button">Enter without sound</button>
-  </div>
-</div>
+<main>
+  <div class="ey">Quantum Age Capital · Limited Edition</div>
+  <h1>Quantum <em>Gala</em></h1>
+  <div class="when">December 2026 · Black tie · Kasteel in Nederland</div>
 
-<header class="hero" id="top">
-  <div class="media"><video id="film" playsinline muted loop preload="metadata"><source src="aftermovie.mp4" type="video/mp4"></video></div>
-  <button class="sound" id="sound" type="button" hidden>Sound on</button>
-  <div class="hi w">
-    <div class="brand">Quantum Age Capital <i>×</i> <span>The Finest Media</span></div>
-    <h1>Quantum <em>Gala</em></h1>
-    <div class="only">The only Quantum gala open to non-members</div>
-    <p>A black-tie evening in a castle, with the Quantum members, a guide to investing in today's market and photos of you to keep.</p>
-    <div class="row"><button class="cta js-apply" type="button">Reserve your seat <span>→</span></button><a class="cta g" href="#value">What you get</a></div>
-    <div class="meta"><span>December 2026</span><span>Castle, the Netherlands</span><span>Black tie</span><span>30 seats</span></div>
-  </div>
-</header>
+  <p class="hook">Het Quantum gala is normaal alleen voor members. Dit is de enige editie waar je zonder membership bij kunt zijn.</p>
 
-<section>
-  <div class="w">
-    <div class="about">
+  <ul class="get">
+    <li><b>Galadiner in een kasteel</b>, met live muziek</li>
+    <li><b>Kennismaken met de Quantum members</b></li>
+    <li><b>De Gala Box</b>, met Roberts gids: verstandig investeren op de lange termijn</li>
+    <li><b>Professionele foto's</b> van jou op de avond</li>
+  </ul>
+
+  <div id="seatWrap">
+    <div class="seats"><span>30 plekken</span><span id="seatTxt"></span></div>
+    <div class="meter" id="meter" hidden><i id="bar"></i></div>
+  </div>
+
+  <div class="card">
+    <form id="form" novalidate>
       <div>
-        <span class="ey">About Quantum</span>
-        <h2>Normally <em>members only</em></h2>
+        <h2>Meld je <em>aan</em></h2>
+        <p>Alleen je naam en nummer. We nemen binnen 48 uur contact op via WhatsApp.</p>
       </div>
-      <div>
-        <p>Quantum Age Capital is Robert Nass's community for people who want to grow and protect their money. Its gala is normally closed.</p>
-        <p>This December, members can each bring someone from their network. That's why you can get a seat now, and meet Quantum for the first time.</p>
-      </div>
+      <div class="f"><label for="name">Naam</label><input id="name" name="name" autocomplete="name" placeholder="Voor- en achternaam" required></div>
+      <div class="f"><label for="phone">WhatsApp-nummer</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+31 6 12345678" required></div>
+      <p class="err" id="err" hidden>Vul je naam en een geldig telefoonnummer in.</p>
+      <button type="submit">Aanmelden <span>→</span></button>
+      <p class="small">Aanmelden is gratis en verplicht je tot niets.</p>
+    </form>
+    <div class="done" id="done" role="status">
+      <h2>Je staat op de <em>lijst</em></h2>
+      <p>We sturen je binnen 48 uur een WhatsApp met alle details.</p>
     </div>
   </div>
-</section>
 
-<section style="padding-top:0">
-  <div class="w">
-    <span class="ey">The last edition</span>
-    <h2>See what you're <em>walking into</em></h2>
-    <div class="reels">
-      <figure><video muted loop playsinline preload="metadata" poster="photo-02.jpg" src="clip-01.mp4"></video></figure>
-      <figure><video muted loop playsinline preload="metadata" poster="photo-03.jpg" src="clip-02.mp4"></video></figure>
-      <figure><video muted loop playsinline preload="metadata" poster="photo-04.jpg" src="clip-03.mp4"></video></figure>
-    </div>
-    <div class="photos">
-      <figure><img src="photo-01.jpg" alt="Gala" loading="lazy"></figure>
-      <figure><img src="photo-05.jpg" alt="Gala" loading="lazy"></figure>
-      <figure><img src="photo-06.jpg" alt="Gala" loading="lazy"></figure>
-      <figure><img src="photo-02.jpg" alt="Gala" loading="lazy"></figure>
-      <figure><img src="photo-03.jpg" alt="Gala" loading="lazy"></figure>
-    </div>
+  <div class="hosts">
+    <div class="mec"><img src="host-robert.jpg" alt="Robert Nass"><div><b>Robert Nass</b><span>Quantum Age Capital</span></div></div>
+    <div class="mec"><img src="host-otto.jpg" alt="Otto Rothfusz"><div><b>Otto Rothfusz</b><span>The Finest Media</span></div></div>
   </div>
-</section>
 
-<section id="value" style="padding-top:0">
-  <div class="w narrow">
-    <span class="ey">Your ticket includes</span>
-    <h2>What you <em>walk away with</em></h2>
-    <div class="stack">
-      <div class="v hl"><div><h3>The investor guide by Robert Nass</h3><p>How to become a smart long-term investor in today's market. What's happening with money right now, and how to put your own money to work. Printed for the night, digital copy included.</p></div><span class="k">Only for guests</span></div>
-      <div class="v"><div><h3>How to build a 7-figure personal brand</h3><p>Otto's playbook, from building a 4.8M+ follower network. What to post, how to position yourself, how it turns into business.</p></div><span class="k">Only for guests</span></div>
-      <div class="v"><div><h3>Your first introduction to Quantum</h3><p>A seat among the members, at a table we put together for you. The easiest way into the community.</p></div><span class="k">One time</span></div>
-      <div class="v"><div><h3>Photos of you, shot by our team</h3><p>Professional portraits and moments from the night, edited and sent to you. Ready for LinkedIn and Instagram.</p></div><span class="k">Included</span></div>
-      <div class="v"><div><h3>A fully catered evening in a castle</h3><p>Dinner, drinks and live music, black tie, from arrival until late.</p></div><span class="k">Included</span></div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="w">
-    <span class="ey">The Quantum Box</span>
-    <h2>Two guides, <em>printed</em> for the night</h2>
-    <div class="guides">
-      <div class="guide"><div class="cover" aria-hidden="true"><small>Robert Nass</small><strong>Investing wisely in today's market</strong></div><div><b>The investor guide</b><p>From Quantum Age Capital.</p></div></div>
-      <div class="guide"><div class="cover" aria-hidden="true"><small>Otto Rothfusz</small><strong>How to build a 7-figure personal brand</strong></div><div><b>The personal brand playbook</b><p>From The Finest Media.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="w">
-    <span class="ey">Ticket</span>
-    <h2>The price goes <em>up</em>, not down</h2>
-    <div class="price">
-      <div class="tier now" id="t1"><small>Seats 1 to 20 · now</small><div class="n">€1,249</div><p>Everything above included</p></div>
-      <div class="tier" id="t2"><small>Seats 21 to 30</small><div class="n">€1,490</div><p>Last ten seats</p></div>
-    </div>
-    <div class="up"><div><b>Your own content package</b><p>A dedicated shoot during the night and a video edit made just for you.</p></div><div class="amt">+ €450</div></div>
-    <div class="hosts">
-      <div class="mec"><img src="host-robert.jpg" alt="Robert Nass"><div><b>Robert Nass</b><span>Quantum Age Capital</span></div></div>
-      <div class="mec"><img src="host-otto.jpg" alt="Otto Rothfusz"><div><b>Otto Rothfusz</b><span>The Finest Media</span></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="final" style="padding-top:20px">
-  <div class="w narrow">
-    <span class="ey">30 seats · By invitation</span>
-    <h2>Leave your name. <em>We'll WhatsApp you.</em></h2>
-    <div class="row"><button class="cta js-apply" type="button">Reserve your seat <span>→</span></button></div>
-    <div class="faq" style="text-align:left;margin-top:60px">
-      <details><summary>Where is it?</summary><p>A castle in the Netherlands. We share the address once your seat is confirmed.</p></details>
-      <details><summary>Dress code?</summary><p>Black tie. Tuxedo for men, evening wear for women.</p></details>
-      <details><summary>How does it work?</summary><p>Leave your name and number. We WhatsApp you within 48 hours, have a short chat, and send your payment link.</p></details>
-    </div>
-  </div>
-</section>
-
-<footer><div class="w">Quantum Gala · Quantum Age Capital Limited Edition · Hosted by Robert Nass &amp; Otto Rothfusz</div></footer>
-
-<div class="bar" id="bar"><div class="w"><span><b id="barPrice">€1,249</b><span class="hide-s">30 seats · price goes up after seat 20</span></span><button class="cta js-apply" type="button">Reserve</button></div></div>
-
-<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mt">
-  <div class="sheet">
-    <button class="x" id="close" type="button" aria-label="Close">×</button>
-    <div id="formWrap">
-      <h3 id="mt">Reserve your <em>seat</em></h3>
-      <p class="s">Just your name and number. We'll WhatsApp you within 48 hours.</p>
-      <form id="form" novalidate>
-        <div class="f"><label for="name">Name</label><input id="name" name="name" autocomplete="name" placeholder="First and last name" required></div>
-        <div class="f"><label for="phone">WhatsApp number</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+31 6 12345678" required></div>
-        <p class="err" id="err" hidden>Fill in your name and a valid phone number.</p>
-        <button class="cta" type="submit">Reserve <span>→</span></button>
-        <p class="fine">Free and without obligation. 30 seats.</p>
-      </form>
-    </div>
-    <div class="ok" id="ok" role="status">
-      <h3>You're on the <em>list</em></h3>
-      <p class="s">We'll WhatsApp you within 48 hours with the details.</p>
-    </div>
-  </div>
-</div>
+  <footer>Alles over de avond: <a href="https://quantumgala.nl" target="_blank" rel="noopener">quantumgala.nl</a></footer>
+</main>
 
 <script>
-// Edit these
-var SEATS_SOLD = 0;         // real number of paid seats
-var FORM_ENDPOINT = "";     // your Supabase / Make / Formspree webhook
+// Pas aan met echte cijfers. Laat APPLIED op 0 zolang je nog geen aanmeldingen hebt, dan blijft de teller verborgen.
+var APPLIED = 0;            // echte aantal aanmeldingen
+var FORM_ENDPOINT = "";     // bijv. je Supabase/Make/Formspree-webhook
 
 (function(){
-  var price=SEATS_SOLD>=20?1490:1249;
-  if(SEATS_SOLD>=20){document.getElementById("t1").className="tier past";document.getElementById("t2").className="tier now"}
-  document.getElementById("barPrice").textContent="€"+price.toLocaleString("en-US");
-
-  // gate + hero film
-  var gate=document.getElementById("gate"),film=document.getElementById("film"),snd=document.getElementById("sound");
-  function enter(sound){gate.classList.add("out");setTimeout(function(){gate.hidden=true},700);film.muted=!sound;var p=film.play();if(p&&p.catch)p.catch(function(){});snd.hidden=false;snd.textContent=film.muted?"Sound on":"Sound off"}
-  document.getElementById("enter").addEventListener("click",function(){enter(true)});
-  document.getElementById("skip").addEventListener("click",function(){enter(false)});
-  snd.addEventListener("click",function(){film.muted=!film.muted;if(!film.muted)film.play().catch(function(){});snd.textContent=film.muted?"Sound on":"Sound off"});
-  film.addEventListener("error",function(){film.style.display="none"},true);
-
-  // reels autoplay when visible; hide broken videos so the poster image shows
-  document.querySelectorAll(".reels video").forEach(function(v){
-    v.addEventListener("error",function(){var i=document.createElement("img");i.src=v.getAttribute("poster");i.alt="";v.replaceWith(i)});
-    if("IntersectionObserver" in window){new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?v.play().catch(function(){}):v.pause()})},{threshold:.3}).observe(v)}
-  });
-
-  // popup
-  var modal=document.getElementById("modal"),nameI=document.getElementById("name");
-  function openM(){modal.hidden=false;setTimeout(function(){nameI.focus()},50)}
-  function closeM(){modal.hidden=true}
-  document.querySelectorAll(".js-apply").forEach(function(b){b.addEventListener("click",openM)});
-  document.getElementById("close").addEventListener("click",closeM);
-  modal.addEventListener("click",function(e){if(e.target===modal)closeM()});
-  addEventListener("keydown",function(e){if(e.key==="Escape")closeM()});
-  // quantumgala.nl/#reserve opens the popup straight away (for YouTube pinned comments)
-  if(location.hash==="#reserve"){gate.hidden=true;openM()}
-
+  if(APPLIED>0){
+    document.getElementById("seatTxt").textContent=APPLIED+" aanmeldingen";
+    document.getElementById("meter").hidden=false;
+    document.getElementById("bar").style.width=Math.min(100,APPLIED/30*100)+"%";
+  }
   var form=document.getElementById("form"),err=document.getElementById("err");
   form.addEventListener("submit",function(e){
     e.preventDefault();
     var n=form.name.value.trim(),p=form.phone.value.replace(/[^\d+]/g,"");
     if(!n||p.replace(/\D/g,"").length<9){err.hidden=false;return}
     err.hidden=true;
-    var data={name:n,phone:p,source:location.hash==="#reserve"?"youtube":"site",ts:new Date().toISOString()};
-    function done(){document.getElementById("formWrap").style.display="none";document.getElementById("ok").classList.add("on")}
+    var data={name:n,phone:p,source:"youtube",ts:new Date().toISOString()};
+    function done(){form.style.display="none";document.getElementById("done").classList.add("on")}
     if(FORM_ENDPOINT){fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}).then(done).catch(done)}else{done()}
   });
-
-  // sticky bar
-  var hero=document.querySelector(".hero"),bar=document.getElementById("bar");
-  function onScroll(){bar.classList.toggle("on",hero.getBoundingClientRect().bottom<0)}
-  addEventListener("scroll",onScroll,{passive:true});onScroll();
 })();
 </script>
