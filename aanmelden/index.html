@@ -1,0 +1,114 @@
+<title>Quantum Gala Aanmelden</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<script>(function(){var p=location.pathname,l=p.split("/").pop();if(location.protocol!=="file:"&&l&&l.indexOf(".")<0&&!/claude\.ai|claudeusercontent/.test(location.host)){var b=document.createElement("base");b.href=p+"/";document.head.appendChild(b)}})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: one phone-first column, The Finest Media system. Built to be opened from a pinned YouTube comment. */
+:root{--bg:#0a0a0a;--bg2:#141413;--ink:#f2eee4;--ink2:#cfc9bc;--ink3:#97917f;--line:rgba(242,238,228,.12);
+--serif:"EB Garamond",Georgia,"Times New Roman",serif;--sans:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans);margin:0;-webkit-font-smoothing:antialiased}
+main{max-width:560px;margin:0 auto;padding-block:44px 56px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.ey{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink3);font-weight:600}
+h1{font:400 clamp(56px,15vw,84px)/.92 var(--serif);margin:18px 0 0;letter-spacing:-.015em}
+h1 em,h2 em{font-style:italic}
+.when{margin-top:14px;color:var(--ink2);font-size:14px;letter-spacing:.04em}
+.hook{font:400 23px/1.3 var(--serif);margin:28px 0 0;color:var(--ink);text-wrap:balance}
+.get{list-style:none;padding:0;margin:26px 0 0;border-top:1px solid var(--line)}
+.get li{padding:13px 0;border-bottom:1px solid var(--line);color:var(--ink2);font-size:15px}
+.get li b{color:var(--ink);font-weight:600}
+.seats{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px;font-size:14px;color:var(--ink2)}
+.meter{height:4px;border-radius:4px;background:var(--line);margin-top:10px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--ink);width:0}
+.card{margin-top:30px;border:1px solid var(--line);border-radius:20px;background:var(--bg2);padding:24px}
+.card h2{font:400 30px/1.1 var(--serif);margin:0}
+.card p{color:var(--ink3);font-size:14px;margin:8px 0 0}
+form{display:grid;gap:16px;margin-top:20px}
+.f{display:grid;gap:7px}
+.f label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--ink3)}
+.f input{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);font:400 17px var(--sans);padding:15px 16px;border-radius:12px}
+.f input:focus{outline:0;border-color:rgba(242,238,228,.45)}
+.f input::placeholder{color:#5f5b52}
+button{display:flex;justify-content:center;align-items:center;gap:8px;width:100%;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:17px 22px;font:600 15px var(--sans);cursor:pointer}
+button span{opacity:.55}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.err{color:#e59a85;font-size:14px;margin:0}
+.small{font-size:12.5px;color:var(--ink3);margin:0;text-align:center}
+.done{display:none}.done.on{display:block}
+.hosts{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.mec{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:6px 16px 6px 6px;background:var(--bg2)}
+.mec img{width:38px;height:38px;border-radius:50%;object-fit:cover}
+.mec b{display:block;font-weight:600;font-size:14px}.mec span{display:block;font-size:12px;color:var(--ink3)}
+footer{margin-top:34px;font-size:12px;color:var(--ink3);text-align:center}
+footer a{color:var(--ink2)}
+</style>
+
+<main>
+  <div class="ey">Quantum Age Capital · Limited Edition</div>
+  <h1>Quantum <em>Gala</em></h1>
+  <div class="when">December 2026 · Black tie · Kasteel in Nederland</div>
+
+  <p class="hook">Het Quantum gala is normaal alleen voor members. Dit is de enige editie waar je zonder membership bij kunt zijn.</p>
+
+  <ul class="get">
+    <li><b>Galadiner in een kasteel</b>, met live muziek</li>
+    <li><b>Kennismaken met de Quantum members</b></li>
+    <li><b>De Gala Box</b>, met Roberts gids: verstandig investeren op de lange termijn</li>
+    <li><b>Professionele foto's</b> van jou op de avond</li>
+  </ul>
+
+  <div id="seatWrap">
+    <div class="seats"><span>30 plekken</span><span id="seatTxt"></span></div>
+    <div class="meter" id="meter" hidden><i id="bar"></i></div>
+  </div>
+
+  <div class="card">
+    <form id="form" novalidate>
+      <div>
+        <h2>Meld je <em>aan</em></h2>
+        <p>Alleen je naam en nummer. We nemen binnen 48 uur contact op via WhatsApp.</p>
+      </div>
+      <div class="f"><label for="name">Naam</label><input id="name" name="name" autocomplete="name" placeholder="Voor- en achternaam" required></div>
+      <div class="f"><label for="phone">WhatsApp-nummer</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+31 6 12345678" required></div>
+      <p class="err" id="err" hidden>Vul je naam en een geldig telefoonnummer in.</p>
+      <button type="submit">Aanmelden <span>→</span></button>
+      <p class="small">Aanmelden is gratis en verplicht je tot niets.</p>
+    </form>
+    <div class="done" id="done" role="status">
+      <h2>Je staat op de <em>lijst</em></h2>
+      <p>We sturen je binnen 48 uur een WhatsApp met alle details.</p>
+    </div>
+  </div>
+
+  <div class="hosts">
+    <div class="mec"><img src="host-robert.jpg" alt="Robert Nass"><div><b>Robert Nass</b><span>Quantum Age Capital</span></div></div>
+    <div class="mec"><img src="host-otto.jpg" alt="Otto Rothfusz"><div><b>Otto Rothfusz</b><span>The Finest Media</span></div></div>
+  </div>
+
+  <footer>Alles over de avond: <a href="https://quantumgala.nl" target="_blank" rel="noopener">quantumgala.nl</a></footer>
+</main>
+
+<script>
+// Pas aan met echte cijfers. Laat APPLIED op 0 zolang je nog geen aanmeldingen hebt, dan blijft de teller verborgen.
+var APPLIED = 0;            // echte aantal aanmeldingen
+var FORM_ENDPOINT = "";     // bijv. je Supabase/Make/Formspree-webhook
+
+(function(){
+  if(APPLIED>0){
+    document.getElementById("seatTxt").textContent=APPLIED+" aanmeldingen";
+    document.getElementById("meter").hidden=false;
+    document.getElementById("bar").style.width=Math.min(100,APPLIED/30*100)+"%";
+  }
+  var form=document.getElementById("form"),err=document.getElementById("err");
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var n=form.name.value.trim(),p=form.phone.value.replace(/[^\d+]/g,"");
+    if(!n||p.replace(/\D/g,"").length<9){err.hidden=false;return}
+    err.hidden=true;
+    var data={name:n,phone:p,source:"youtube",ts:new Date().toISOString()};
+    function done(){form.style.display="none";document.getElementById("done").classList.add("on")}
+    if(FORM_ENDPOINT){fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}).then(done).catch(done)}else{done()}
+  });
+})();
+</script>
