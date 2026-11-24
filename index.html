@@ -451,6 +451,14 @@ a.co .ig{width:20px;height:20px;color:var(--ink3);margin-left:auto;align-self:fl
   .wy .items,.wy .addon{max-width:none}
   .wy .items{margin-top:0}
 }
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+
+/* v48 */
+.partner{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:5px 12px 5px 5px;border-radius:980px;background:rgba(0,0,0,.45);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18);color:var(--ink2);font-size:13px;text-decoration:none}
+.partner img{width:24px;height:24px;border-radius:50%;object-fit:cover}
+.partner b{color:var(--ink);font-weight:600}
+.reel figure{flex-basis:min(40%,220px)}
+@media (min-width:900px){.reel{grid-template-columns:repeat(6,1fr)}.reel figure{aspect-ratio:9/16}.qs{grid-template-columns:repeat(3,1fr)}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01s!important;animation-delay:0s!important;transition:none!important}}
 </style>
 
@@ -488,6 +496,7 @@ a.co .ig{width:20px;height:20px;color:var(--ink3);margin-left:auto;align-self:fl
   <div class="bg"><video id="film" playsinline muted loop autoplay preload="auto"><source src="aftermovie.mp4" type="video/mp4"></video></div>
   <div class="w">
     <div class="date">December 2026 · The Netherlands</div>
+    <a class="partner" href="https://www.instagram.com/heritageclass" target="_blank" rel="noopener"><img src="pg-heritageclass.jpg" alt=""><span>In partnership with <b>heritageclass</b> · 1.2M</span></a>
     <h1>Quantum Gala.</h1>
     <p>One time open for non-members.</p>
     <a class="btn js-go" href="#reserve" style="margin-top:24px">Request your seat</a>
@@ -517,15 +526,17 @@ a.co .ig{width:20px;height:20px;color:var(--ink3);margin-left:auto;align-self:fl
     </div>
     <span class="k" style="margin-top:36px">Earlier Quantum nights</span>
     <div class="reel">
-      <figure><video muted playsinline loop preload="metadata" poster="ev-a.jpg"><source src="ev-a.mp4" type="video/mp4"></video></figure>
-      <figure><video muted playsinline loop preload="metadata" poster="ev-b.jpg"><source src="ev-b.mp4" type="video/mp4"></video></figure>
-      <figure><video muted playsinline loop preload="metadata" poster="ev-c.jpg"><source src="ev-c.mp4" type="video/mp4"></video></figure>
+      <figure><video muted playsinline loop preload="metadata" poster="ev-1.jpg"><source src="ev-1.mp4" type="video/mp4"></video></figure>
+      <figure><video muted playsinline loop preload="metadata" poster="ev-2.jpg"><source src="ev-2.mp4" type="video/mp4"></video></figure>
+      <figure><video muted playsinline loop preload="metadata" poster="ev-3.jpg"><source src="ev-3.mp4" type="video/mp4"></video></figure>
+      <figure><video muted playsinline loop preload="metadata" poster="ev-4.jpg"><source src="ev-4.mp4" type="video/mp4"></video></figure>
+      <figure><video muted playsinline loop preload="metadata" poster="ev-5.jpg"><source src="ev-5.mp4" type="video/mp4"></video></figure>
+      <figure><video muted playsinline loop preload="metadata" poster="ev-6.jpg"><source src="ev-6.mp4" type="video/mp4"></video></figure>
     </div>
     <div class="qs">
       <figure><q>Een goede community was juist wat ik miste.</q><figcaption>Koen · member</figcaption></figure>
       <figure><q>Robert legt duidelijk uit waarom iets interessant is, en welke risico's erbij komen kijken.</q><figcaption>Joseph L. · member</figcaption></figure>
       <figure><q>Quantum voelt eerder als een vriendengroep.</q><figcaption>Bram · member</figcaption></figure>
-      <figure><q>Met elkaar doen we echt technische analyse.</q><figcaption>Tim · member</figcaption></figure>
     </div>
   </div>
 </section>
@@ -542,7 +553,7 @@ a.co .ig{width:20px;height:20px;color:var(--ink3);margin-left:auto;align-self:fl
       <details class="it"><summary><img src="host-robert.jpg" alt=""><span class="no">03</span><b>Robert's investor blueprint <em class="bn">Bonus</em></b><i class="v" data-val="guide"></i></summary><div class="body"><img src="host-robert.jpg" alt=""><p>How Robert looks at stocks, crypto and where money is moving, and how to start investing wisely. Printed, yours to keep.</p></div></details>
       <details class="it"><summary><img src="photo-04.jpg" alt=""><span class="no">04</span><b>The personal brand playbook</b><i class="v" data-val="playbook"></i></summary><div class="body"><img src="photo-04.jpg" alt=""><p>How to build an elite personal brand that pays. From the team behind 4.8M+ followers across luxury lifestyle pages.</p></div></details>
       <details class="it"><summary><img src="photo-08.jpg" alt=""><span class="no">05</span><b>Content creation of you <em class="bn">Bonus</em></b><i class="v" data-val="photos"></i></summary><div class="body"><img src="photo-08.jpg" alt=""><p>Our team shoots photo and video of you during the night. Edited and ready to post.</p></div></details>
-      <details class="it"><summary><img src="photo-07.jpg" alt=""><span class="no">06</span><b>Strategy call with Otto <em class="bn">Bonus</em></b><i class="v" data-val="call"></i></summary><div class="body"><img src="photo-07.jpg" alt=""><p>An exclusive 30-minute call with Otto on how to scale your personal brand. One on one, after the gala.</p></div></details>
+      <details class="it"><summary><img src="photo-07.jpg" alt=""><span class="no">06</span><b>Strategy call with Otto <em class="bn">Bonus</em></b><i class="v" data-val="call"></i></summary><div class="body"><img src="photo-07.jpg" alt=""><p>An exclusive 30-minute call with Otto on how to scale your brand, and how he grew multiple accounts to millions of followers. One on one, after the gala.</p></div></details>
     </div>
     <p class="only" id="stackTotal"></p>
     <p class="addon"><b>Want more content?</b> Add a full personal shoot and video edit, ready for Instagram and LinkedIn. Ask us on WhatsApp.</p>
@@ -558,8 +569,10 @@ a.co .ig{width:20px;height:20px;color:var(--ink3);margin-left:auto;align-self:fl
       <form class="lf js-form" novalidate>
         <input name="name" id="nm" autocomplete="name" placeholder="Full name" aria-label="Full name" required>
         <input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="WhatsApp number" aria-label="WhatsApp number" required>
+        <input name="email" type="email" inputmode="email" autocomplete="email" placeholder="Email" aria-label="Email" required>
+        <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
         <button class="btn" type="submit">Request your seat</button>
-        <p class="err" hidden>Fill in your name and a valid number.</p>
+        <p class="err" hidden>Fill in your name, a valid number and email.</p>
       </form>
       <div class="ok2" hidden role="status"><b>Request received.</b> We'll contact you on WhatsApp within 48 hours.</div>
       <div class="who js-who"></div>
@@ -576,7 +589,7 @@ a.co .ig{width:20px;height:20px;color:var(--ink3);margin-left:auto;align-self:fl
   <div class="tyin">
     <svg class="chk" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29"/><path d="M19 33l9 9 18-19"/></svg>
     <h2 id="tyh">You're on the list<span id="tyn"></span>.</h2>
-    <p class="tys">Request received. Here's what happens next.</p>
+    <p class="tys">Request received. We sent you a confirmation email. Here's what happens next.</p>
     <div class="tyv"><video id="tyv" playsinline muted loop preload="auto" poster="thanks.jpg"><source src="thanks.mp4" type="video/mp4"></video><button type="button" class="tysnd" id="tysnd">Tap for sound</button></div>
     <ol class="steps">
       <li><b>We review your request</b><span>Within 48 hours.</span></li>
@@ -600,7 +613,7 @@ var FACES = [
   {name:"Robert Nass", photo:"host-robert.jpg"},
   {name:"Otto Rothfusz", photo:"host-otto.jpg"}
 ];
-var FORM_ENDPOINT = "";   // your Supabase / Make / Formspree webhook
+var FORM_ENDPOINT = "/api/request";   // Vercel function: saves to Supabase + sends the confirmation email
 var VALUES = {dinner:0, seat:0, guide:0, playbook:0, photos:0, box:0, call:0}; // euros, 0 = hidden
 // --------------------
 (function(){
@@ -644,16 +657,25 @@ var VALUES = {dinner:0, seat:0, guide:0, playbook:0, photos:0, box:0, call:0}; /
   document.querySelectorAll(".js-form").forEach(function(f){
     f.addEventListener("submit",function(e){
       e.preventDefault();
-      var nm=f.name.value.trim(),ph=f.phone.value.replace(/[^\d+]/g,""),err=f.querySelector(".err");
-      if(!nm||ph.replace(/\D/g,"").length<9){err.hidden=false;return}
+      var nm=f.name.value.trim(),ph=f.phone.value.replace(/[^\d+]/g,""),em=f.email.value.trim(),err=f.querySelector(".err"),btn=f.querySelector("button[type=submit]");
+      if(!nm||ph.replace(/\D/g,"").length<9||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){err.textContent="Fill in your name, a valid number and email.";err.hidden=false;return}
+      if(btn.disabled)return;
       err.hidden=true;
-      var d={name:nm,phone:ph,source:location.hash==="#reserve"?"youtube":"site",ts:new Date().toISOString()};
-      if(FORM_ENDPOINT)fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)}).catch(function(){});
+      var d={name:nm,phone:ph,email:em,website:f.website.value,source:location.hash==="#reserve"?"youtube":"site"};
+      var live=FORM_ENDPOINT&&location.protocol!=="file:"&&!/claude\.ai|claudeusercontent/.test(location.host);
+      if(!live){done();return}
+      btn.disabled=true;var label=btn.textContent;btn.textContent="Sending…";
+      fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)})
+        .then(function(r){if(!r.ok)throw r;done()})
+        .catch(function(){btn.disabled=false;btn.textContent=label;err.textContent="Something went wrong. Please try again.";err.hidden=false});
+    });
+    function done(){
+      var nm=f.name.value.trim();
       if(!sent){n++;sent=true;draw()}
       document.querySelectorAll(".js-form").forEach(function(x){x.hidden=true;x.nextElementSibling.hidden=false});
       var ty=$("ty"),tv=$("tyv");$("tyn").textContent=", "+nm.split(" ")[0];ty.hidden=false;document.body.style.overflow="hidden";
       requestAnimationFrame(function(){ty.classList.add("on")});tv.currentTime=0;tryPlay(tv);
-    });
+    }
   });
   function go(e){if(e)e.preventDefault();var f=document.querySelector("#reserve .card2");f.scrollIntoView({behavior:"smooth",block:"center"});setTimeout(function(){var i=$("nm");if(i&&!i.closest("form").hidden)i.focus({preventScroll:true})},650)}
   document.querySelectorAll('.js-go,a[href="#reserve"]').forEach(function(a){a.addEventListener("click",go)});
