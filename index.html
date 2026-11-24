@@ -456,7 +456,12 @@ a.co .ig{width:20px;height:20px;color:var(--ink3);margin-left:auto;align-self:fl
 /* v48 */
 .partner{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:5px 12px 5px 5px;border-radius:980px;background:rgba(0,0,0,.45);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18);color:var(--ink2);font-size:13px;text-decoration:none}
 .partner img{width:24px;height:24px;border-radius:50%;object-fit:cover}
-.partner b{color:var(--ink);font-weight:600}
+.partner a{color:var(--ink);font-weight:600;text-decoration:none}.partner a:hover{text-decoration:underline}
+.partner .pav{display:flex}.partner .pav img{border:2px solid #111}.partner .pav img+img{margin-left:-9px}
+.partner .pn{color:var(--ink);font-weight:600;padding-left:8px;border-left:1px solid rgba(255,255,255,.2)}
+.partner{white-space:nowrap;max-width:100%}.ps{display:none}
+@media (max-width:520px){.pl{display:none}.ps{display:inline}}
+@media (max-width:360px){.partner{font-size:12px}}
 .reel figure{flex-basis:min(40%,220px)}
 @media (min-width:900px){.reel{grid-template-columns:repeat(6,1fr)}.reel figure{aspect-ratio:9/16}.qs{grid-template-columns:repeat(3,1fr)}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01s!important;animation-delay:0s!important;transition:none!important}}
@@ -496,7 +501,7 @@ a.co .ig{width:20px;height:20px;color:var(--ink3);margin-left:auto;align-self:fl
   <div class="bg"><video id="film" playsinline muted loop autoplay preload="auto"><source src="aftermovie.mp4" type="video/mp4"></video></div>
   <div class="w">
     <div class="date">December 2026 · The Netherlands</div>
-    <a class="partner" href="https://www.instagram.com/heritageclass" target="_blank" rel="noopener"><img src="pg-heritageclass.jpg" alt=""><span>In partnership with <b>heritageclass</b> · 1.2M</span></a>
+    <div class="partner"><span class="pav"><img src="pg-heritageclass.jpg" alt=""><img src="pg-clasysociety.jpg" alt=""></span><span><span class="pl">In partnership with</span><span class="ps">With</span> <a href="https://www.instagram.com/heritageclass" target="_blank" rel="noopener">heritageclass</a> &amp; <a href="https://www.instagram.com/clasysociety" target="_blank" rel="noopener">clasysociety</a></span><span class="pn">2.2M</span></div>
     <h1>Quantum Gala.</h1>
     <p>One time open for non-members.</p>
     <a class="btn js-go" href="#reserve" style="margin-top:24px">Request your seat</a>
