@@ -15,7 +15,7 @@ function esc(s) {
   return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
-function confirmationHtml(first) {
+function confirmationHtml(first, sponsor) {
   const step = (n, title, sub) => `
     <tr><td style="padding:14px 0;border-top:1px solid #262626">
       <table role="presentation" cellpadding="0" cellspacing="0"><tr>
@@ -33,12 +33,11 @@ function confirmationHtml(first) {
       <div style="font:400 11px Arial,sans-serif;letter-spacing:4px;color:#8b8d8d;margin-top:14px">GALA &middot; DECEMBER 2026</div>
     </td></tr>
     <tr><td style="font:600 30px Arial,sans-serif;letter-spacing:-0.5px;color:#f5f5f7;line-height:1.15">
-      You're on the list, ${esc(first)}.</td></tr>
+      ${sponsor ? "Thank you, " + esc(first) + "." : "You're on the list, " + esc(first) + "."}</td></tr>
     <tr><td style="font:400 16px Arial,sans-serif;color:#c7c8c8;line-height:1.5;padding:12px 0 26px">
-      We received your request for the Quantum Gala. Only 10 seats are open to non-members, so we review every request personally.</td></tr>
-    ${step(1, "We review your request", "Within 48 hours.")}
-    ${step(2, "We contact you on WhatsApp", "With tickets and availability.")}
-    ${step(3, "You secure your seat", "Then you get the location and all details.")}
+      ${sponsor ? "We received your sponsorship request for the Quantum Gala Special Edition on 19 December 2026." : "We received your request for the Quantum Gala. Only 10 seats are open to non-members, so we review every request personally."}</td></tr>
+    ${sponsor ? step(1, "We contact you on WhatsApp", "Within 48 hours, to talk it through.") + step(2, "We send the sponsor proposal", "Placements, tickets and content, in writing.") + step(3, "Your brand goes up", "Banners, reels and promotion before the night.")
+      : step(1, "We review your request", "Within 48 hours.") + step(2, "We contact you on WhatsApp", "With tickets and availability.") + step(3, "You secure your seat", "Then you get the location and all details.")}
     <tr><td style="padding:30px 0 8px">
       <a href="https://www.instagram.com/quantumagecapital" style="display:inline-block;background:#f5f5f7;color:#000000;font:600 15px Arial,sans-serif;text-decoration:none;padding:14px 26px;border-radius:980px">Follow Quantum on Instagram</a>
     </td></tr>
@@ -85,35 +84,60 @@ module.exports = async (req, res) => {
   const phone = String(b.phone || "").replace(/[^\d+]/g, "").slice(0, 20);
   const email = String(b.email || "").trim().toLowerCase().slice(0, 200);
   const source = String(b.source || "site").slice(0, 40);
+  const company = String(b.company || "").trim().slice(0, 160);
+  const sponsor = source === "sponsor";
   if (!name || phone.replace(/\D/g, "").length < 9 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ ok: false, error: "invalid" });
   }
 
-  // 1. Save to Supabase
+  // 1. Save. Every lead is ALWAYS written to the Vercel log first (Vercel > project > Logs, search "GALA_LEAD"),
+  //    so nothing is lost even before the database is connected.
+  const lead = { name, phone, email, source, company: company || null, at: new Date().toISOString() };
+  console.log("GALA_LEAD " + JSON.stringify(lead));
+  let saved = false;
+  const PG = process.env.POSTGRES_URL_NON_POOLING || process.env.POSTGRES_URL || process.env.DATABASE_URL;
+  if (PG) {
+    try {
+      const { Client } = require("pg");
+      const db = new Client({ connectionString: PG.replace(/[?&]sslmode=[^&]*/, ""), ssl: { rejectUnauthorized: false } });
+      await db.connect();
+      await db.query(`create table if not exists public.gala_requests (
+        id bigint generated always as identity primary key, created_at timestamptz not null default now(),
+        name text not null, phone text not null, email text not null, source text, company text, user_agent text,
+        status text not null default 'new')`);
+      await db.query("alter table public.gala_requests add column if not exists company text");
+      await db.query("alter table public.gala_requests enable row level security");
+      await db.query("insert into public.gala_requests (name, phone, email, source, company, user_agent) values ($1,$2,$3,$4,$5,$6)",
+        [name, phone, email, source, company || null, String(req.headers["user-agent"] || "").slice(0, 300)]);
+      await db.end();
+      saved = true;
+    } catch (e) { console.error("pg save failed", e.message); }
+  }
   const SB = (process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || "").replace(/\/$/, "");
   const KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  try {
-    const r = await fetch(`${SB}/rest/v1/gala_requests`, {
-      method: "POST",
-      headers: { apikey: KEY, Authorization: `Bearer ${KEY}`, "Content-Type": "application/json", Prefer: "return=minimal" },
-      body: JSON.stringify({ name, phone, email, source, user_agent: String(req.headers["user-agent"] || "").slice(0, 300) }),
-    });
-    if (!r.ok) throw new Error("supabase " + r.status + " " + (await r.text()));
-  } catch (e) {
-    console.error(e);
-    return res.status(500).json({ ok: false, error: "save" });
+  if (!saved && SB && KEY) {
+    try {
+      const r = await fetch(`${SB}/rest/v1/gala_requests`, {
+        method: "POST",
+        headers: { apikey: KEY, Authorization: `Bearer ${KEY}`, "Content-Type": "application/json", Prefer: "return=minimal" },
+        body: JSON.stringify({ name, phone, email, source, company: company || null, user_agent: String(req.headers["user-agent"] || "").slice(0, 300) }),
+      });
+      if (!r.ok) throw new Error("supabase " + r.status + " " + (await r.text()));
+      saved = true;
+    } catch (e) { console.error("rest save failed", e.message); }
   }
+  if (!saved) console.warn("GALA_LEAD not in database yet (connect Supabase in Vercel > Storage). Lead is in this log line above.");
 
   // 2. Emails. A failed email never loses the request: it is already saved.
   const first = name.split(/\s+/)[0];
   const from = process.env.MAIL_FROM || "Quantum Gala <gala@quantumgala.nl>";
   const jobs = [];
   if (process.env.RESEND_API_KEY) {
-    jobs.push(sendEmail({ from, to: [email], subject: `You're on the list, ${first}`, html: confirmationHtml(first), text: confirmationText(first) }));
+    jobs.push(sendEmail({ from, to: [email], subject: sponsor ? `Your Quantum Gala sponsorship, ${first}` : `You're on the list, ${first}`, html: confirmationHtml(first, sponsor), text: sponsor ? `Thank you, ${first}. We received your sponsorship request for the Quantum Gala Special Edition on 19 December 2026. We contact you on WhatsApp within 48 hours.` : confirmationText(first) }));
     if (process.env.NOTIFY_EMAIL) {
       jobs.push(sendEmail({
-        from, to: [process.env.NOTIFY_EMAIL], subject: `New gala request: ${name}`,
-        text: `Name: ${name}\nWhatsApp: ${phone}\nEmail: ${email}\nSource: ${source}\nWhatsApp link: https://wa.me/${phone.replace(/\D/g, "")}`,
+        from, to: [process.env.NOTIFY_EMAIL], subject: sponsor ? `New SPONSOR request: ${company} (${name})` : `New gala request: ${name}`,
+        text: `Name: ${name}\nCompany: ${company || "-"}\nWhatsApp: ${phone}\nEmail: ${email}\nSource: ${source}\nWhatsApp link: https://wa.me/${phone.replace(/\D/g, "")}`,
       }));
     }
   }
